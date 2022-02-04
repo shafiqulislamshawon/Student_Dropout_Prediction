@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'student_dropout.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dropout_prediction',
+        'NAME': 'student_dropout_prediction',
         'USER': 'postgres',
-        'PASSWORD': '#1234',
+        'PASSWORD': '210048774',
         'HOST': 'localhost',
     }
 }

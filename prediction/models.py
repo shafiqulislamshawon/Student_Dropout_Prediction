@@ -55,10 +55,10 @@ class StudentDetails(models.Model):
     #Group - 4
     amount_of_drop_semester = models.IntegerField()
     drop_reason = models.CharField(max_length=255)
-    due_amount = models.DecimalField(decimal_places=2)
+    due_amount = models.DecimalField(max_digits=9, decimal_places=2)
 
     #Result
-    result = models.IntegerField(choices=RESULTS, blank=True)
+    result = models.IntegerField(choices=YES_NO, blank=True)
 
 
     def __str__(self):
