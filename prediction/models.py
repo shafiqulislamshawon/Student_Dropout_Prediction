@@ -58,7 +58,7 @@ class StudentDetails(models.Model):
     due_amount = models.DecimalField(max_digits=9, decimal_places=2)
 
     #Result
-    result = models.IntegerField(choices=YES_NO, blank=True)
+    result = models.IntegerField(choices=LOW_MEDIUM_HIGH, blank=True)
 
 
     def __str__(self):

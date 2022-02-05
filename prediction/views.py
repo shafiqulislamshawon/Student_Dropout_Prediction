@@ -49,34 +49,36 @@ class StudentDropoutPrediction(APIView):
         file.close()
 
         loaded_model = model_from_json(model_json)
-        load_weight = loaded_model.load_weight('student_prediction_model.h5')
+        # load_weight = loaded_model.load_weight('student_prediction_model.h5')
+        loaded_model.load_weights('student_prediction_model.h5')
 
-        prediction = np.argmax(load_weight.predict([[
-                    gender,
-                    nationaity,
-                    place_of_birth,
-                    department,
-                    year,
-                    institute,
+        prediction = np.argmax(loaded_model.predict([[
+                    # gender,
+                    # nationaity,
+                    # place_of_birth,
+                    # department,
+                    # year,
+                    # institute,
                     time_of_group_study,
                     absent_in_a_semester,
-                    ask_question_frequently,
-                    use_additional_course_material,
-                    result_of_last_semester,
-                    meet_with_advisor,
-                    parent_satisfied,
-                    parent_education_status,
+                    # ask_question_frequently,
+                    # use_additional_course_material,
+                    # result_of_last_semester,
+                    # meet_with_advisor,
+                    # parent_satisfied,
+                    # parent_education_status,
                     amount_of_drop_semester,
-                    drop_reason,
-                    due_amount]]),axis=1)
+                    # drop_reason,
+                    # due_amount
+                    ]]),axis=1)
 
         #Final result will set here
         if(prediction[0]==0):
-            data['result'] = "High"
+            data['result'] = prediction[0] # Low
         elif(prediction[0]==1):
-            data['result'] = "Low"
+            data['result'] = prediction[0] # Medium
         else:
-            data['result'] = "Medium" 
+            data['result'] = prediction[0] # High
 
 
         serializer = StudentDetailsSerializer(data=data)
