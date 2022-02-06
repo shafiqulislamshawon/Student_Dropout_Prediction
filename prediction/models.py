@@ -34,7 +34,7 @@ class StudentDetails(models.Model):
 
     #Group - 1
     gender = models.IntegerField(choices=GENDER_CHOICES)
-    nationaity = models.CharField(max_length=50)
+    nationality = models.CharField(max_length=50)
     place_of_birth = models.CharField(max_length=255)
     department = models.CharField(max_length=255)
     year = models.IntegerField()
