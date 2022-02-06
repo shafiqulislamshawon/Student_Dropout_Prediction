@@ -20,11 +20,11 @@ class StudentDetails(models.Model):
     ]
 
     PARENTS_EDUCATION_STATUS = [
-        (0, 'PSC'),
-        (1, 'JSC'),
-        (2, 'SSC'),
-        (3, 'HSC'),
-        (4, 'Above HSC'),
+        (0, 'Below JSC'),
+        (1, 'SSC'),
+        (2, 'HSC'),
+        (3, 'Graduate'),
+        # (4, 'Above HSC'),
     ]
 
 
