@@ -25,7 +25,7 @@ SECRET_KEY = 'ravq(tani(@d1n^qzgobtdd%&bii(2d__6emad*ht2^1si3yvn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [*]
 
 
 # Application definition
