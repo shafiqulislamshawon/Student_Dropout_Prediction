@@ -54,7 +54,7 @@ class StudentDropoutPrediction(APIView):
 
         prediction = np.argmax(loaded_model.predict([[
                     # gender,
-                    # nationaity,
+                    # nationality,
                     # place_of_birth,
                     # department,
                     # year,
