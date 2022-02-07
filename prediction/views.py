@@ -25,7 +25,7 @@ class StudentDropoutPrediction(APIView):
         data = request.data #Get all the request data/ form data
 
         gender = data['gender']
-        nationaity = data["nationaity"]
+        nationality = data["nationaity"]
         place_of_birth = data["place_of_birth"]
         department = data["department"]
         year = data["year"]
