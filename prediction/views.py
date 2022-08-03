@@ -11,18 +11,18 @@ import json
 import numpy as np
 
 
-
 class StudentDropoutPrediction(APIView):
     """
     List all students, or create a new student.
     """
+
     def get(self, request, format=None):
         student_details = StudentDetails.objects.all()
         serializer = StudentDetailsSerializer(student_details, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        data = request.data #Get all the request data/ form data
+        data = request.data  # Get all the request data/ form data
 
         gender = data['gender']
         nationality = data["nationality"]
@@ -41,9 +41,8 @@ class StudentDropoutPrediction(APIView):
         amount_of_drop_semester = data["amount_of_drop_semester"]
         drop_reason = data["drop_reason"]
         due_amount = data["due_amount"]
-        
 
-        #Do Prediction 
+        # Do Prediction
         file = open('student_prediction_model.json', 'r')
         model_json = file.read()
         file.close()
@@ -53,33 +52,32 @@ class StudentDropoutPrediction(APIView):
         loaded_model.load_weights('student_prediction_model.h5')
 
         prediction = np.argmax(loaded_model.predict([[
-                    # gender,
-                    # nationality,
-                    # place_of_birth,
-                    # department,
-                    # year,
-                    # institute,
-                    time_of_group_study,
-                    absent_in_a_semester,
-                    # ask_question_frequently,
-                    # use_additional_course_material,
-                    # result_of_last_semester,
-                    # meet_with_advisor,
-                    # parent_satisfied,
-                    # parent_education_status,
-                    amount_of_drop_semester,
-                    # drop_reason,
-                    # due_amount
-                    ]]),axis=1)
+            # gender,
+            # nationality,
+            # place_of_birth,
+            # department,
+            # year,
+            # institute,
+            time_of_group_study,
+            absent_in_a_semester,
+            # ask_question_frequently,
+            # use_additional_course_material,
+            # result_of_last_semester,
+            # meet_with_advisor,
+            # parent_satisfied,
+            # parent_education_status,
+            amount_of_drop_semester,
+            # drop_reason,
+            # due_amount
+        ]]), axis=1)
 
-        #Final result will set here
-        if(prediction[0]==0):
-            data['result'] = prediction[0] # Low
-        elif(prediction[0]==1):
-            data['result'] = prediction[0] # Medium
+        # Final result will set here
+        if (prediction[0] == 0):
+            data['result'] = prediction[0]  # Low
+        elif (prediction[0] == 1):
+            data['result'] = prediction[0]  # Medium
         else:
-            data['result'] = prediction[0] # High
-
+            data['result'] = prediction[0]  # High
 
         serializer = StudentDetailsSerializer(data=data)
         if serializer.is_valid():

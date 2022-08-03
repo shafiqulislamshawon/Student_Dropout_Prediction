@@ -4,5 +4,5 @@ from . import views
 
 
 urlpatterns = [
-    path('predict/', views.StudentDropoutPrediction.as_view()),
+    path('', views.StudentDropoutPrediction.as_view()),
 ]
